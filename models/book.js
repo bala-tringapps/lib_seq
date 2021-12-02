@@ -13,34 +13,40 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  Book.init({
-    book_id:{
-      type:DataTypes.INTEGER,
-      allowNull:false,
-      autoIncrement:true,
-      primaryKey:true
+  Book.init(
+    {
+      book_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      author: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      edition: DataTypes.STRING,
+      publisher: DataTypes.STRING,
+      summary: DataTypes.STRING,
+      ISBN: {
+        type: DataTypes.BIGINT,
+      },
+      genre: DataTypes.STRING,
+      url: DataTypes.STRING,
+      authorId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
-    title: {
-     type: DataTypes.STRING,
-     allowNull:false
-     
-    },
-    author:{
-      type:DataTypes.STRING,
-      allowNull:false
-    },
-    edition:DataTypes.STRING,
-    publisher:DataTypes.STRING,
-    summary: DataTypes.STRING,
-    ISBN:{
-      type:DataTypes.BIGINT,
-    },
-    genre: DataTypes.STRING,
-    url: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Book',
-    tableName:'bookDetails'
-  });
+    {
+      sequelize,
+      modelName: 'Book',
+      tableName: 'bookDetails',
+    }
+  )
   return Book;
 };
